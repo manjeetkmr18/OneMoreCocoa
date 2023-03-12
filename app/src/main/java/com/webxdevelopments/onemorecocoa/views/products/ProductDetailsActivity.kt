@@ -1,0 +1,114 @@
+package com.webxdevelopments.onemorecocoa.views.products
+
+import android.text.Html
+import android.text.method.LinkMovementMethod
+import android.util.Log
+import com.google.gson.Gson
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import com.webxdevelopments.onemorecocoa.R
+import com.webxdevelopments.onemorecocoa.common_utils.BaseBindingActivity
+import com.webxdevelopments.onemorecocoa.common_utils.CommonUtils
+import com.webxdevelopments.onemorecocoa.common_utils.Constants
+import com.webxdevelopments.onemorecocoa.databinding.ActivityProductDetailsBinding
+import com.webxdevelopments.onemorecocoa.views.products.model.ProductsModel
+
+class ProductDetailsActivity : BaseBindingActivity<ActivityProductDetailsBinding>() {
+    private var TAG = ProductDetailsActivity::class.java.simpleName.toString()
+
+    private lateinit var productsModel: ProductsModel
+    override fun getLayoutID(): Int {
+        return R.layout.activity_product_details
+    }
+
+    override fun initUI() {
+        getIntentData()
+        CommonUtils.showTopBack(binding.includeLayoutBack, true)
+        CommonUtils.showTopTitle(binding.includeLayoutBack, true, "Product Details")
+        binding.includeLayoutBack.cardBack.setOnClickListener {
+            finish()
+        }
+
+        binding.tvProductDetailsDesc.isClickable = true
+        binding.tvProductDetailsDesc.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvProductDetailsDesc.text = Html.fromHtml(resources.getString(R.string.product_details_desc))
+
+
+        binding.tvQuantityMinus.setOnClickListener {
+            var count = binding.tvQuantityCount.text.toString().toInt()
+            if(count !=1){
+                count--
+            }
+            binding.tvQuantityCount.text = count.toString()
+        }
+        binding.tvQuantityAdd.setOnClickListener {
+            var count = binding.tvQuantityCount.text.toString().toInt()
+            count++
+            binding.tvQuantityCount.text = count.toString()
+        }
+    }
+
+    private fun getIntentData() {
+        val bundle = intent.extras
+        if(bundle != null){
+            if(bundle.containsKey(Constants.INTENT_PRODUCT_DETAIL)){
+                val productsModelStr = bundle.getString(Constants.INTENT_PRODUCT_DETAIL)
+                productsModel = Gson().fromJson(productsModelStr, ProductsModel::class.java)
+                setProductData(productsModel)
+            }else{
+                setDummyData()
+            }
+        }else{
+            setDummyData()
+        }
+    }
+
+    private fun setProductData(productsModel: ProductsModel) {
+        val image = productsModel.photo.toString()
+        Log.e(TAG, "imageUrl---$image")
+        if(CommonUtils.isNullOrEmpty(image)){
+            binding.ivProductImage.setImageResource(R.drawable.image_placeholder)
+        }
+        else {
+            Picasso.with(this)
+                .load(image)
+                .into(binding.ivProductImage, object : Callback {
+                    override fun onSuccess() {
+                        Log.e(TAG, "imageUrl---onSuccess")
+                    }
+
+                    override fun onError() {
+                        Log.e(TAG, "imageUrl---onError")
+                        binding.ivProductImage.setImageResource(R.drawable.image_placeholder)
+                    }
+                })
+        }
+        
+        val title = productsModel.name.toString()
+        if(CommonUtils.isNullOrEmpty(title)){
+            binding.tvProductDetailsTitle.text = ""
+        }else {
+            binding.tvProductDetailsTitle.text = title
+        }
+
+        val price = productsModel.price.toString()
+        if(CommonUtils.isNullOrEmpty(price)){
+            binding.tvProductDetailsPrice.text = ""
+        }else {
+            binding.tvProductDetailsPrice.text = "$$price"
+        }
+
+        val desc = productsModel.description.toString()
+        if(CommonUtils.isNullOrEmpty(desc)){
+            binding.tvProductDetailsDesc.text = ""
+        }else {
+            binding.tvProductDetailsDesc.text = desc
+        }
+    }
+    private fun setDummyData() {
+        binding.ivProductImage.setImageResource(R.mipmap.img_product)
+        binding.tvProductDetailsTitle.text = "70% DARK CHOCOLATE"
+        binding.tvProductDetailsPrice.text = "$9.99"
+        binding.tvProductDetailsDesc.text = resources.getString(R.string.product_details_desc)
+    }
+}

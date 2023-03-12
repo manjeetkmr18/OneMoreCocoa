@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">One More Cocoa</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="welcome">Welcome</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="create_account">Create Account</string>
+    <string name="submit">Submit</string>
+    <string name="forgot_password_msg">We will send you an email to reset your password.</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="one_more_cocoa">One More Cocoa</string>
+    <string name="gourmet_chocolate">gourmet Chocolate</string>
+    <string name="product_details_desc"><a style="text-decoration:underline" href="https://www.onemorecocoa.com/policies/shipping-policy"><u>Shipping</u></a> calculated at checkout.\n100%. from Trinitario cocoa beans. This dark has taste notes of raw nuts, fudge, floral, earthy &amp; smoky.</string>
+    <string name="profile_txt">Profile</string>
+    <string name="name">Name</string>
+    <string name="err_email_empty">Enter email!!</string>
+    <string name="err_email_invalid">Enter valid email!!</string>
+    <string name="err_password_empty">Enter password!!</string>
+    <string name="err_first_name_empty">Enter first name!!</string>
+    <string name="err_first_name_invalid">Enter valid first name!!</string>
+    <string name="err_last_name_empty">Enter last name!!</string>
+    <string name="err_last_name_invalid">Enter valid last name!!</string>
+    <string name="no_internet_connection">No internet connection</string>
+
+    <string-array name="shop_by_categories">
+        <item>Milk Chocolate</item>
+        <item>White Chocolate</item>
+        <item>Dark Chocolate</item>
+    </string-array>
+</resources>

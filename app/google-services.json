@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "772439355469",
+    "firebase_url": "https://chocolate-app-a6ee0-default-rtdb.firebaseio.com",
+    "project_id": "chocolate-app-a6ee0",
+    "storage_bucket": "chocolate-app-a6ee0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772439355469:android:8b74f282a2090a1a99ac04",
+        "android_client_info": {
+          "package_name": "com.webxdevelopments.onemorecocoa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772439355469-cvpg122osgjqi2q2tvhs713s8itc3stu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD64ckO5d9zgaZUJmxUof-6uCIaxiTXUR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772439355469-cvpg122osgjqi2q2tvhs713s8itc3stu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
