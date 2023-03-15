@@ -81,4 +81,5 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:fontFamily">@font/montserrat_alternates_medium</item>
     </style>
+
 </resources>

@@ -6,4 +6,5 @@ package com.webxdevelopments.onemorecocoa.views.firebase_utils
 object FirebaseConstants {
     final const val DB_USERS = "users"
     final const val DB_PRODUCTS = "products"
+    final const val DB_CARTS = "carts"
 }

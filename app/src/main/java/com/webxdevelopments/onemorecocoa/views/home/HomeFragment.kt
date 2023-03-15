@@ -13,9 +13,12 @@ import com.webxdevelopments.onemorecocoa.views.dashboard.DashboardActivity
 import com.webxdevelopments.onemorecocoa.views.products.ProductDetailsActivity
 import com.webxdevelopments.onemorecocoa.views.products.ProductListAdapter
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.webxdevelopments.onemorecocoa.common_utils.CommonUtils
 import com.webxdevelopments.onemorecocoa.common_utils.Constants
+import com.webxdevelopments.onemorecocoa.views.firebase_utils.FirebaseConstants
 import com.webxdevelopments.onemorecocoa.views.firebase_utils.FirebaseProductsDB
 import com.webxdevelopments.onemorecocoa.views.products.model.ProductsModel
 
@@ -96,6 +99,7 @@ class HomeFragment(val homeScreenClickCallback: DashboardActivity.HomeScreenClic
     }
 
     private fun noProductsData(isVisi:Boolean){
+
         if(isVisi){
             binding.llHomeProducts.visibility = View.GONE
             binding.tvNoProductData.visibility = View.VISIBLE

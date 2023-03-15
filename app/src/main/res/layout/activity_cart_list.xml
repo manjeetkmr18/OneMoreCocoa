@@ -39,5 +39,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/_20sdp"/>
+        <TextView
+            android:id="@+id/tvNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/bg_color_card"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/montserrat_alternates_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clBackBtn"
+            android:text="Cart is empty!!"
+            android:paddingBottom="@dimen/_30sdp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

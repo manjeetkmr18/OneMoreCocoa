@@ -21,8 +21,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardDelete">
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardProductImg"
                     android:layout_width="0dp"
@@ -34,12 +34,13 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintDimensionRatio="H,1:0.5">
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                         <ImageView
                             android:id="@+id/ivProductImg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
                             android:src="@mipmap/img_product"
                             android:adjustViewBounds="true"
                             app:layout_constraintStart_toStartOf="parent"
@@ -53,22 +54,25 @@
 
                 <TextView
                     android:id="@+id/tvProductTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_12ssp"
                     android:fontFamily="@font/montserrat_alternates_medium"
                     android:text="70% DARK CHOCOLATE"
                     android:textColor="@color/white"
+                    android:maxLines="2"
+                    android:ellipsize="end"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_20sdp"
                     app:layout_constraintStart_toEndOf="@+id/cardProductImg"
                     app:layout_constraintTop_toTopOf="@+id/cardProductImg"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:includeFontPadding="false"/>
 
                 <TextView
                     android:id="@+id/tvProductPrice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_10ssp"
                     android:fontFamily="@font/montserrat_alternates"
@@ -79,17 +83,20 @@
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_20sdp"
                     app:layout_constraintStart_toEndOf="@+id/cardProductImg"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductTitle"/>
+                    app:layout_constraintTop_toBottomOf="@+id/tvProductTitle"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <LinearLayout
                     android:id="@+id/llProductDetailsQuantity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:gravity="center_vertical"
                     app:layout_constraintStart_toEndOf="@+id/cardProductImg"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductPrice">
+                    app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingEnd="@dimen/_10sdp">
                     <TextView
                         android:id="@+id/tvCartQuantity"
                         android:layout_width="wrap_content"

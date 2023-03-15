@@ -2,19 +2,24 @@ package com.webxdevelopments.onemorecocoa.views.shop_by
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webxdevelopments.onemorecocoa.R
-import com.webxdevelopments.onemorecocoa.databinding.ItemProductListBinding
 import com.google.android.material.card.MaterialCardView
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import com.webxdevelopments.onemorecocoa.R
+import com.webxdevelopments.onemorecocoa.common_utils.CommonUtils
+import com.webxdevelopments.onemorecocoa.databinding.ItemProductListBinding
+import com.webxdevelopments.onemorecocoa.views.products.model.ProductsModel
 
 /**
  * Created on 27/02/23.
  */
 class ShopByCategoriesAdapter(var context: Context,
-                              var list: ArrayList<String>,
+                              var list: ArrayList<ProductsModel>,
                               var productListCallback:ProductListCallback): RecyclerView.Adapter<ShopByCategoriesAdapter.ViewHolder>() {
     val TAG: String = ShopByCategoriesAdapter::class.java.simpleName
 
@@ -29,6 +34,42 @@ class ShopByCategoriesAdapter(var context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        val currentItem = list[position]
+        var image = currentItem.photo.toString()
+        //val image = "https://firebasestorage.googleapis.com/v0/b/chocolate-app-a6ee0.appspot.com/o/GHIRARDELLI%20Caramel%20Milk%20Chocolate%20Squares.png?alt=media&token=c05aa0c3-65eb-4a8f-bdca-205f43b114ca"
+        val productName = currentItem.name.toString()
+        val productPrice = currentItem.price.toString()
+
+        if(CommonUtils.isNullOrEmpty(productName)){
+            holder.binding.tvProductTitle.text = ""
+        }else{
+            holder.binding.tvProductTitle.text = productName
+        }
+
+        if(CommonUtils.isNullOrEmpty(productPrice)){
+            holder.binding.tvProductPrice.text = ""
+        }else{
+            holder.binding.tvProductPrice.text = "$$productPrice"
+        }
+
+        if(CommonUtils.isNullOrEmpty(image)){
+            holder.binding.ivProductImg.setImageResource(R.drawable.image_placeholder)
+        }
+        else {
+            Picasso.with(context)
+                .load(image)
+                .into(holder.binding.ivProductImg, object : Callback {
+                    override fun onSuccess() {
+                        Log.e(TAG, "imageUrl---onSuccess")
+                    }
+
+                    override fun onError() {
+                        Log.e(TAG, "imageUrl---onError")
+                        holder.binding.ivProductImg.setImageResource(R.drawable.image_placeholder)
+                    }
+                })
+        }
+
         holder.binding.cardItemProduct.setOnClickListener {
             productListCallback.onItemClick(position, holder.binding.cardItemProduct)
         }
@@ -36,7 +77,7 @@ class ShopByCategoriesAdapter(var context: Context,
 
 
     override fun getItemCount(): Int {
-        return 20
+        return list.size
     }
 
     class ViewHolder(binding: ItemProductListBinding) :

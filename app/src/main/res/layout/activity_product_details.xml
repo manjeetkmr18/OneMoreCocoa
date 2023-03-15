@@ -178,6 +178,15 @@
                         style="@style/ButtonStyleCart"
                         android:layout_margin="@dimen/_10sdp"/>
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDeleteCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Remove from cart"
+                        android:drawableEnd="@drawable/ic_cart_done"
+                        style="@style/ButtonStyleCart"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:visibility="gone"/>
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnBuyNow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

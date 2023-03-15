@@ -11,7 +11,7 @@ import com.webxdevelopments.onemorecocoa.R
 /**
  * Created on 11/03/23.
  */
-class ShopByCategorySpinnerAdapter(val context:Context, var arrayData:Array<String>) : BaseAdapter() {
+class ShopByCategorySpinnerAdapter(val context:Context, var arrayData:ArrayList<String>) : BaseAdapter() {
     private val TAG: String = ShopByCategorySpinnerAdapter::class.java.simpleName
     var inflter: LayoutInflater? = LayoutInflater.from(context)
 

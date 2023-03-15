@@ -10,5 +10,6 @@ data class ProductsModel(
 	var name: String? = "",
 	var description: String? = "",
 	var photo: String? = "",
-	var category: String? = ""
+	var category: String? = "",
+	var product_id: String? = ""
 ) : Parcelable
